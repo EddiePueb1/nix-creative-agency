@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 
 import { ServiceData } from '../../data/services';
 
@@ -38,8 +39,8 @@ export default function ServiceHero({ data }: ServiceHeroProps) {
             {data.paragraph2}
           </p>
           <div>
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full border border-white/20 hover:border-transparent transition-colors text-sm font-medium relative overflow-hidden"
             >
               <span className="relative z-10 group-hover:text-black transition-colors duration-300">{data.ctaText}</span>
@@ -47,7 +48,7 @@ export default function ServiceHero({ data }: ServiceHeroProps) {
                 <ArrowUpRight size={16} />
               </div>
               <div className="absolute right-2 top-2 w-8 h-8 bg-[#b4ff39] rounded-full group-hover:scale-[15] transition-transform duration-500 ease-in-out z-0" />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="w-full md:w-1/2 relative min-h-[400px]">

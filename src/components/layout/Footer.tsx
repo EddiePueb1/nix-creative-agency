@@ -14,8 +14,7 @@ export default function Footer() {
               nix
             </Link>
             <p className="text-gray-400 text-lg max-w-sm mb-8">
-              The agency with heart. Data-driven creativity for ambitious
-              brands.
+              Designed for ambitious brands ready to grow.
             </p>
             <div className="flex gap-4">
               <a
@@ -86,10 +85,10 @@ export default function Footer() {
             <ul className="space-y-4 text-gray-300">
               <li>
                 <Link
-                  href="/#expertise"
+                  href="/services"
                   className="hover:text-white transition-colors"
                 >
-                  Expertise
+                  Services
                 </Link>
               </li>
               <li>

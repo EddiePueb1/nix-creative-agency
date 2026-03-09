@@ -4,6 +4,54 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'motion/
 import { MessageCircle, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+function MobileNavLink({ href, onClick, children, className = "" }: { href: string; onClick: () => void; children: React.ReactNode; className?: string }) {
+  const [isClicked, setIsClicked] = useState(false);
+  const router = useRouter();
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsClicked(true);
+    setTimeout(() => {
+      onClick();
+      router.push(href);
+      setIsClicked(false);
+    }, 400); // 400ms delay to let the animation play
+  };
+
+  const isHeading = className.includes('text-3xl');
+
+  return (
+    <a 
+      href={href} 
+      onClick={handleClick} 
+      className={`relative group block ${className}`}
+    >
+      <div className="absolute inset-y-0 left-[-16px] right-[-1rem] overflow-hidden pointer-events-none -z-10">
+        <motion.div 
+          initial={{ x: '-100%' }}
+          animate={{ x: isClicked ? '0%' : '-100%' }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className="absolute inset-0 bg-gradient-to-r from-[#b4ff39]/30 to-transparent"
+        />
+      </div>
+      
+      {!isHeading && (
+         <motion.div
+           initial={{ height: '0%' }}
+           animate={{ height: isClicked ? '100%' : '0%' }}
+           transition={{ duration: 0.3, ease: 'easeOut' }}
+           className="absolute left-[-18px] bottom-0 w-[2px] bg-[#b4ff39]"
+         />
+      )}
+      
+      <span className="relative z-10 transition-colors duration-300">
+        {children}
+      </span>
+    </a>
+  );
+}
 
 export default function Navbar() {
   const { scrollY } = useScroll();
@@ -14,39 +62,44 @@ export default function Navbar() {
     setIsScrolled(latest > 50);
   });
 
-  const NavContent = () => (
+  const NavContent = ({ isScrolled = false }: { isScrolled?: boolean }) => (
     <>
-      <Link href="/" className="text-2xl font-display font-bold tracking-tight">
+      <Link href="/" className={`${isScrolled ? 'text-2xl' : 'text-3xl'} font-display font-bold tracking-tight transition-all duration-300`}>
         nix
       </Link>
 
       <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-800">
         <div className="relative group">
-          <Link href="/#expertise" className="hover:text-black transition-colors flex items-center gap-1 py-2">
-            Expertise <span className="text-gray-400 text-xs transition-transform duration-300 group-hover:rotate-45">+</span>
+          <Link href="/services" className="hover:text-black transition-colors flex items-center gap-1 py-2">
+            Services <span className="text-gray-400 text-xs transition-transform duration-300 group-hover:rotate-45">+</span>
           </Link>
           <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
             <div className="bg-white border border-black/5 shadow-xl rounded-2xl p-2 w-48 flex flex-col">
               <Link href="/services/website-design" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Website Design</Link>
+              <Link href="/services/seo" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">SEO</Link>
               <Link href="/services/social-media" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Social Media</Link>
-              <Link href="/services/analytics" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Analytics</Link>
+              <Link href="/services/branding" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Brand Identity</Link>
+              <Link href="/services/analytics" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Data & Analytics</Link>
               <Link href="/services/ai-automations" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">AI Automations</Link>
             </div>
           </div>
         </div>
 
-        <div className="relative group">
-          <Link href="/#services" className="hover:text-black transition-colors flex items-center gap-1 py-2">
-            Services <span className="text-gray-400 text-xs transition-transform duration-300 group-hover:rotate-45">+</span>
-          </Link>
-          <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
-            <div className="bg-white border border-black/5 shadow-xl rounded-2xl p-2 w-48 flex flex-col">
-              <Link href="/services/digital-strategy" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Digital Strategy</Link>
-              <Link href="/services/content-creation" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Content Creation</Link>
-              <Link href="/services/paid-media" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Paid Media</Link>
+        {/* 
+          TODO: Kept notes for me: I commented out these services (the unused services button), so remind me to uncomment it if necessary.
+          <div className="relative group">
+            <Link href="/#services" className="hover:text-black transition-colors flex items-center gap-1 py-2">
+              Services <span className="text-gray-400 text-xs transition-transform duration-300 group-hover:rotate-45">+</span>
+            </Link>
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+              <div className="bg-white border border-black/5 shadow-xl rounded-2xl p-2 w-48 flex flex-col">
+                <Link href="/services/digital-strategy" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Digital Strategy</Link>
+                <Link href="/services/content-creation" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Content Creation</Link>
+                <Link href="/services/paid-media" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Paid Media</Link>
+              </div>
             </div>
           </div>
-        </div>
+        */}
 
         <Link href="/#results" className="hover:text-black transition-colors py-2">
           Results
@@ -72,7 +125,7 @@ export default function Navbar() {
 
       <div className="flex items-center gap-4">
         <Link
-          href="/#contact"
+          href="/contact"
           className="hidden md:flex relative items-center gap-3 pl-4 pr-1.5 py-1.5 rounded-full border border-black/10 hover:border-transparent transition-colors text-sm font-medium group overflow-hidden"
         >
           <span className="relative z-10 group-hover:text-black transition-colors duration-300">Contact Us</span>
@@ -106,7 +159,7 @@ export default function Navbar() {
             className="fixed top-0 left-0 w-full z-40 px-0"
           >
             <div className="bg-white/80 backdrop-blur-md border-b border-black/5 px-6 md:px-8 py-4 md:py-5 flex items-center justify-between">
-              <NavContent />
+              <NavContent isScrolled={false} />
             </div>
           </motion.header>
         ) : (
@@ -119,7 +172,7 @@ export default function Navbar() {
             className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] md:w-full max-w-5xl z-40"
           >
             <div className="bg-white/80 backdrop-blur-md border border-black/5 shadow-sm rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
-              <NavContent />
+              <NavContent isScrolled={true} />
             </div>
           </motion.header>
         )}
@@ -128,10 +181,10 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-50 bg-white flex flex-col"
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-black/5">
@@ -148,39 +201,44 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col p-6 gap-6 overflow-y-auto pb-24">
               <div>
-                <Link href="/#expertise" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4">Expertise</Link>
+                <MobileNavLink href="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4">Services</MobileNavLink>
                 <div className="flex flex-col gap-3 pl-4 border-l-2 border-black/10">
-                  <Link href="/services/website-design" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Website Design</Link>
-                  <Link href="/services/social-media" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Social Media</Link>
-                  <Link href="/services/analytics" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Analytics</Link>
-                  <Link href="/services/ai-automations" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">AI Automations</Link>
+                  <MobileNavLink href="/services/website-design" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Website Design</MobileNavLink>
+                  <MobileNavLink href="/services/seo" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">SEO</MobileNavLink>
+                  <MobileNavLink href="/services/social-media" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Social Media</MobileNavLink>
+                  <MobileNavLink href="/services/branding" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Brand Identity</MobileNavLink>
+                  <MobileNavLink href="/services/analytics" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Data & Analytics</MobileNavLink>
+                  <MobileNavLink href="/services/ai-automations" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">AI Automations</MobileNavLink>
                 </div>
               </div>
               
+              {/* 
+                TODO: Kept notes for me: I commented out these services (the unused services button), so remind me to uncomment it if necessary.
+                <div>
+                  <MobileNavLink href="/#services" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4 mt-2">Services</MobileNavLink>
+                  <div className="flex flex-col gap-3 pl-4 border-l-2 border-black/10">
+                    <MobileNavLink href="/services/digital-strategy" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Digital Strategy</MobileNavLink>
+                    <MobileNavLink href="/services/content-creation" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Content Creation</MobileNavLink>
+                    <MobileNavLink href="/services/paid-media" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Paid Media</MobileNavLink>
+                  </div>
+                </div>
+              */}
+
+              <MobileNavLink href="/#results" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold mt-2">Results</MobileNavLink>
+
               <div>
-                <Link href="/#services" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4 mt-2">Services</Link>
+                <MobileNavLink href="/#agency" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4 mt-2">Agency</MobileNavLink>
                 <div className="flex flex-col gap-3 pl-4 border-l-2 border-black/10">
-                  <Link href="/services/digital-strategy" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Digital Strategy</Link>
-                  <Link href="/services/content-creation" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Content Creation</Link>
-                  <Link href="/services/paid-media" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Paid Media</Link>
+                  <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">About Us</MobileNavLink>
+                  <MobileNavLink href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Our Team</MobileNavLink>
+                  <MobileNavLink href="/careers" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Careers</MobileNavLink>
                 </div>
               </div>
 
-              <Link href="/#results" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold mt-2">Results</Link>
-
-              <div>
-                <Link href="/#agency" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4 mt-2">Agency</Link>
-                <div className="flex flex-col gap-3 pl-4 border-l-2 border-black/10">
-                  <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">About Us</Link>
-                  <Link href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Our Team</Link>
-                  <Link href="/careers" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Careers</Link>
-                </div>
-              </div>
-
-              <Link href="/#insights" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold mt-2">Insights</Link>
+              <MobileNavLink href="/#insights" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold mt-2">Insights</MobileNavLink>
               
               <Link
-                href="/#contact"
+                href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-8 flex items-center justify-center gap-3 py-4 rounded-full bg-[#b4ff39] text-black text-lg font-medium"
               >
