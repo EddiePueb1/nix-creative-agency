@@ -41,10 +41,10 @@ export default function Results() {
             </h2>
           </div>
           <a
-            href="#work"
+            href="/results"
             className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider pb-1 relative text-white"
           >
-            View All Work 
+            View All Work
             <ArrowUpRight size={16} className="text-[#b4ff39] transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white/20" />
             <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full" />

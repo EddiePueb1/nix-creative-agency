@@ -1,6 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-
+import { motion } from 'motion/react';
 const EXPERTISE_ITEMS = [
   {
     title: 'Website Design',
@@ -50,7 +52,7 @@ export default function ExpertisePage() {
   return (
     <main className="min-h-screen bg-[#f5f5f5] pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <Link 
+        <Link
           href="/"
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-black transition-colors mb-12"
         >
@@ -59,16 +61,31 @@ export default function ExpertisePage() {
         </Link>
 
         {/* Header Section */}
-        <div className="max-w-3xl mb-16 md:mb-24 text-left">
-          <h1 className="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-6">
+        <div className="max-w-4xl mx-auto mb-20 text-center">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-sm font-semibold tracking-widest uppercase text-[#88c222] mb-4 block"
+          >
             Our Services
-          </h1>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-gray-900 mb-6 tracking-tight">
-            Specialized skills for ambitious brands.
-          </h2>
-          <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
+          </motion.h3>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-display font-bold text-gray-900 mb-6"
+          >
+            Specialized Skills.
+          </motion.h1>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto"
+          >
             Choose a service below to learn more about our approach, see our real-world impact, and discover how we can accelerate your growth.
-          </p>
+          </motion.h2>
         </div>
 
         {/* Grid Section */}
@@ -85,23 +102,23 @@ export default function ExpertisePage() {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-              
+
               {/* Overlays mimicking the homepage cards */}
               <div className={`absolute inset-0 bg-gradient-to-t ${item.color} mix-blend-multiply opacity-50 group-hover:opacity-80 transition-opacity duration-500`} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 opacity-90" />
-              
+
               {/* Content constraints */}
               <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 lg:p-10">
                 <div className="translate-y-6 md:translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                   <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3 md:mb-4">
                     {item.title}
                   </h3>
-                  
+
                   {/* The new description that fades in */}
                   <p className="text-gray-300 text-sm md:text-base leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     {item.description}
                   </p>
-                  
+
                   <div className="h-1 w-12 bg-[#b4ff39] mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200" />
                 </div>
               </div>

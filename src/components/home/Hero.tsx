@@ -2,8 +2,12 @@
 
 import { motion } from "motion/react";
 import { Play } from "lucide-react";
+import { useState } from "react";
+import { VideoModal } from "../ui/VideoModal";
 
 export default function Hero() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <section className="pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
       <motion.div
@@ -38,6 +42,7 @@ export default function Hero() {
 
         <div className="absolute bottom-8 right-8 md:bottom-16 md:right-16">
           <motion.button
+            onClick={() => setIsVideoOpen(true)}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -51,6 +56,12 @@ export default function Hero() {
           </motion.button>
         </div>
       </motion.div>
+
+      <VideoModal
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
+        videoSrc="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+      />
     </section>
   );
 }

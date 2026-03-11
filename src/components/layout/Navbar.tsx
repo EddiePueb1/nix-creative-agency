@@ -23,29 +23,29 @@ function MobileNavLink({ href, onClick, children, className = "" }: { href: stri
   const isHeading = className.includes('text-3xl');
 
   return (
-    <a 
-      href={href} 
-      onClick={handleClick} 
+    <a
+      href={href}
+      onClick={handleClick}
       className={`relative group block ${className}`}
     >
       <div className="absolute inset-y-0 left-[-16px] right-[-1rem] overflow-hidden pointer-events-none -z-10">
-        <motion.div 
+        <motion.div
           initial={{ x: '-100%' }}
           animate={{ x: isClicked ? '0%' : '-100%' }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
           className="absolute inset-0 bg-gradient-to-r from-[#b4ff39]/30 to-transparent"
         />
       </div>
-      
+
       {!isHeading && (
-         <motion.div
-           initial={{ height: '0%' }}
-           animate={{ height: isClicked ? '100%' : '0%' }}
-           transition={{ duration: 0.3, ease: 'easeOut' }}
-           className="absolute left-[-18px] bottom-0 w-[2px] bg-[#b4ff39]"
-         />
+        <motion.div
+          initial={{ height: '0%' }}
+          animate={{ height: isClicked ? '100%' : '0%' }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className="absolute left-[-18px] bottom-0 w-[2px] bg-[#b4ff39]"
+        />
       )}
-      
+
       <span className="relative z-10 transition-colors duration-300">
         {children}
       </span>
@@ -101,19 +101,18 @@ export default function Navbar() {
           </div>
         */}
 
-        <Link href="/#results" className="hover:text-black transition-colors py-2">
+        <Link href="/results" className="hover:text-black transition-colors py-2">
           Results
         </Link>
 
         <div className="relative group">
-          <Link href="/#agency" className="hover:text-black transition-colors flex items-center gap-1 py-2">
+          <Link href="/agency" className="hover:text-black transition-colors flex items-center gap-1 py-2">
             Agency <span className="text-gray-400 text-xs transition-transform duration-300 group-hover:rotate-45">+</span>
           </Link>
           <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
             <div className="bg-white border border-black/5 shadow-xl rounded-2xl p-2 w-48 flex flex-col">
               <Link href="/about" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">About Us</Link>
               <Link href="/team" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Our Team</Link>
-              <Link href="/careers" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Careers</Link>
             </div>
           </div>
         </div>
@@ -134,8 +133,8 @@ export default function Navbar() {
           </div>
           <div className="absolute right-1.5 top-1.5 w-[26px] h-[26px] bg-[#b4ff39] rounded-full group-hover:scale-[15] transition-transform duration-500 ease-in-out z-0" />
         </Link>
-        
-        <button 
+
+        <button
           className="md:hidden p-2 -mr-2 text-black"
           onClick={() => setIsMobileMenuOpen(true)}
           aria-label="Open menu"
@@ -191,7 +190,7 @@ export default function Navbar() {
               <Link href="/" className="text-2xl font-display font-bold tracking-tight" onClick={() => setIsMobileMenuOpen(false)}>
                 nix
               </Link>
-              <button 
+              <button
                 className="p-2 -mr-2 text-black bg-gray-100 rounded-full"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Close menu"
@@ -211,7 +210,7 @@ export default function Navbar() {
                   <MobileNavLink href="/services/ai-automations" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">AI Automations</MobileNavLink>
                 </div>
               </div>
-              
+
               {/* 
                 TODO: Kept notes for me: I commented out these services (the unused services button), so remind me to uncomment it if necessary.
                 <div>
@@ -224,19 +223,18 @@ export default function Navbar() {
                 </div>
               */}
 
-              <MobileNavLink href="/#results" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold mt-2">Results</MobileNavLink>
+              <MobileNavLink href="/results" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold mt-2">Results</MobileNavLink>
 
               <div>
-                <MobileNavLink href="/#agency" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4 mt-2">Agency</MobileNavLink>
+                <MobileNavLink href="/agency" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4 mt-2">Agency</MobileNavLink>
                 <div className="flex flex-col gap-3 pl-4 border-l-2 border-black/10">
                   <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">About Us</MobileNavLink>
                   <MobileNavLink href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Our Team</MobileNavLink>
-                  <MobileNavLink href="/careers" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Careers</MobileNavLink>
                 </div>
               </div>
 
               <MobileNavLink href="/#insights" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold mt-2">Insights</MobileNavLink>
-              
+
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
