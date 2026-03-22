@@ -11,7 +11,7 @@ const SERVICES = [
     description:
       "We handle targeting, creative, optimization, and budget management to maximize ROI and drive measurable growth by putting your brand in front of the right people at the right moment.",
     icon: Cpu,
-    image: "https://picsum.photos/seed/ai-scale/800/800",
+    image: "/images/ai-automations.png",
     color: "bg-[#111111]",
     textColor: "text-white",
     buttonColor: "bg-[#b4ff39] text-black",
@@ -22,7 +22,7 @@ const SERVICES = [
     description:
       "We create marketing strategies that don't just chase trends–they meet people where they are. Great marketing should feel personal, purposeful, and perfectly timed.",
     icon: BarChart3,
-    image: "https://picsum.photos/seed/data-solutions/800/800",
+    image: "/images/data-solutions.png",
     color: "bg-[#1a1a1a]",
     textColor: "text-white",
     buttonColor: "bg-white text-black",
@@ -33,7 +33,7 @@ const SERVICES = [
     description:
       "Great design and outstanding performance go hand-in-hand. We bring our unique blend of industry expertise and growth-focused strategy to deliver beautiful, conversion-focused websites.",
     icon: Globe,
-    image: "https://picsum.photos/seed/websites-win/800/800",
+    image: "/images/websites-win.png",
     color: "bg-[#222222]",
     textColor: "text-white",
     buttonColor: "bg-[#b4ff39] text-black",
