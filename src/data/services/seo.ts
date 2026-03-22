@@ -8,7 +8,7 @@ export const seo: ServiceData = {
     heading2: 'Be Found Online',
     paragraph1: 'Targeted strategies to increase your visibility and attract high-quality traffic.',
     paragraph2: 'We combine technical expertise, robust content strategy, and authoritative backlinking for long-term growth.',
-    image: 'https://picsum.photos/seed/seo/800/800',
+    image: '/images/expertise-seo.jpg',
     ctaText: 'Start ranking today'
   },
   approach: {

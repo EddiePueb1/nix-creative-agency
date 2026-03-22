@@ -10,7 +10,7 @@ export const socialMedia: ServiceData = {
       'At Nix Creative, we create social media strategies that do more than post content—they build community, expand reach, and drive real business results.',
     paragraph2:
       'From storytelling and short-form video to analytics and paid amplification, we help brands stand out in crowded feeds.',
-    image: 'https://picsum.photos/seed/socialmediahero/800/800',
+    image: '/images/expertise-social-media.jpg',
     ctaText: 'Talk with our team'
   },
 

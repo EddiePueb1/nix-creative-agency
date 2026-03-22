@@ -10,7 +10,7 @@ export const analytics: ServiceData = {
       'At Nix Creative, we turn website and marketing data into actionable insights that help organizations grow.',
     paragraph2:
       'From Google Analytics implementation to advanced event tracking and performance dashboards, we make sure every important interaction is measured and understood.',
-    image: 'https://picsum.photos/seed/analyticshero/800/800',
+    image: '/images/expertise-data-analytics.jpg',
     ctaText: 'Explore your data'
   },
 

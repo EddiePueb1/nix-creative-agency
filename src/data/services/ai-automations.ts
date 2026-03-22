@@ -8,7 +8,7 @@ export const aiAutomations: ServiceData = {
     heading2: 'Streamline Your Operations',
     paragraph1: 'We leverage cutting-edge artificial intelligence to automate repetitive tasks, improve efficiency, and scale your operations.',
     paragraph2: 'Transform your business processes with custom AI solutions designed specifically for your organizational needs and challenges.',
-    image: 'https://picsum.photos/seed/aiautomations/800/800',
+    image: '/images/expertise-ai-automations.jpg',
     ctaText: 'Automate your workflow'
   },
   approach: {

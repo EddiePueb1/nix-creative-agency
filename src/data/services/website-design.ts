@@ -8,7 +8,7 @@ export const websiteDesign: ServiceData = {
     heading2: 'Built to Perform',
     paragraph1: 'At Nix Creative, we build rich, full-featured websites that grow brands and inspire visitors.',
     paragraph2: "For nearly 30 years, we've delivered websites for some of the best-loved organizations in the country.",
-    image: 'https://picsum.photos/seed/ballet/800/800',
+    image: '/images/expertise-website-design.jpg',
     ctaText: 'Talk with our team'
   },
   approach: {

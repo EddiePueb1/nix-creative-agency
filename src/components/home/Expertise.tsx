@@ -8,37 +8,37 @@ import Link from 'next/link';
 const EXPERTISE_ITEMS = [
   {
     title: 'Website Design',
-    image: '/images/website-design-sketch.png',
+    image: '/images/expertise-website-design.jpg',
     color: 'from-blue-500/20 to-transparent',
     link: '/services/website-design',
   },
   {
     title: 'SEO',
-    image: '/images/seo-simple-sketch.png',
+    image: '/images/expertise-seo.jpg',
     color: 'from-indigo-500/20 to-transparent',
     link: '/services/seo',
   },
   {
     title: 'Social Media',
-    image: '/images/social-media-sketch.png',
+    image: '/images/expertise-social-media.jpg',
     color: 'from-purple-500/20 to-transparent',
     link: '/services/social-media',
   },
   {
     title: 'Brand Identity',
-    image: '/images/brand-identity-expertise.png',
+    image: '/images/expertise-brand-identity.jpg',
     color: 'from-orange-500/20 to-transparent',
     link: '/services/branding',
   },
   {
     title: 'Data & Analytics',
-    image: '/images/data-solutions.png',
+    image: '/images/expertise-data-analytics.jpg',
     color: 'from-green-500/20 to-transparent',
     link: '/services/analytics',
   },
   {
     title: 'AI Automations',
-    image: '/images/ai-automations.png',
+    image: '/images/expertise-ai-automations.jpg',
     color: 'from-pink-500/20 to-transparent',
     link: '/services/ai-automations',
   },

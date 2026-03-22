@@ -8,7 +8,7 @@ export const branding: ServiceData = {
     heading2: 'Memorable by Design',
     paragraph1: 'We craft cohesive and powerful visual and verbal identities that resonate with your audience.',
     paragraph2: 'Your brand is more than a logo—it’s the total experience you offer to your customers.',
-    image: 'https://picsum.photos/seed/branding/800/800',
+    image: '/images/expertise-brand-identity.jpg',
     ctaText: 'Launch your brand'
   },
   approach: {
