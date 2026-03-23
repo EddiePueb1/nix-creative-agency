@@ -5,39 +5,45 @@ import { useRef } from "react";
 import { ArrowUpRight, BarChart3, Globe, Cpu } from "lucide-react";
 import Link from "next/link";
 
-const SERVICES = [
+const PILLARS = [
   {
-    title: "AI Automations that scale.",
+    label: "Pillar 01",
+    title: "We build to win.",
     description:
-      "We handle targeting, creative, optimization, and budget management to maximize ROI and drive measurable growth by putting your brand in front of the right people at the right moment.",
-    icon: Cpu,
-    image: "/images/ai-automations.png",
+      "A beautiful website that doesn't convert is just an expensive brochure. We design and build sites with one goal in mind — turning visitors into leads and leads into clients. Strategy, design, and performance engineered together from day one.",
+    icon: Globe,
+    image: "/images/services-websites.jpg",
     color: "bg-[#111111]",
     textColor: "text-white",
     buttonColor: "bg-[#b4ff39] text-black",
-    link: "/services/ai-automations"
+    buttonLabel: "See Website Design",
+    link: "/services/website-design"
   },
   {
-    title: "Data-driven solutions.",
+    label: "Pillar 02",
+    title: "We let data lead.",
     description:
-      "We create marketing strategies that don't just chase trends–they meet people where they are. Great marketing should feel personal, purposeful, and perfectly timed.",
+      "Gut instinct is a starting point, not a strategy. Every campaign, every channel, every decision we make is grounded in real performance data. We track what's working, cut what isn't, and continuously optimize so your marketing budget works harder over time.",
     icon: BarChart3,
-    image: "/images/data-solutions.png",
+    image: "/images/services-data-solutions.jpg",
     color: "bg-[#1a1a1a]",
     textColor: "text-white",
     buttonColor: "bg-white text-black",
-    link: "/services/data-solutions"
+    buttonLabel: "See Data & Analytics",
+    link: "/services/analytics"
   },
   {
-    title: "Websites that win.",
+    label: "Pillar 03",
+    title: "We automate the repeatable.",
     description:
-      "Great design and outstanding performance go hand-in-hand. We bring our unique blend of industry expertise and growth-focused strategy to deliver beautiful, conversion-focused websites.",
-    icon: Globe,
-    image: "/images/websites-win.png",
+      "Your time is your most valuable asset. We identify the tasks eating your hours — follow-ups, reporting, lead routing, scheduling — and build smart systems that handle them for you. The result is a leaner operation that scales without adding headcount.",
+    icon: Cpu,
+    image: "/images/services-ai-automations.jpg",
     color: "bg-[#222222]",
     textColor: "text-white",
     buttonColor: "bg-[#b4ff39] text-black",
-    link: "/services/website-design"
+    buttonLabel: "See AI Automations",
+    link: "/services/ai-automations"
   },
 ];
 
@@ -49,27 +55,27 @@ export default function Services() {
   });
 
   return (
-    <section id="services" className="py-32 bg-[#f5f5f5]" ref={containerRef}>
+    <section id="pillars" className="py-32 bg-[#f5f5f5]" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
           <div className="max-w-2xl">
             <h3 className="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-4">
-              Services
+              How We Think
             </h3>
             <h2 className="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-6">
-              Built for growth.
+              Three bets we make for every client.
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              We craft marketing campaigns built for growth. Strategy, creative,
-              media, and web come together to turn attention into action, and
-              action into measurable results.
+              Every agency offers services. We operate by principles. These
+              three beliefs shape every strategy, every build, and every
+              decision we make on your behalf.
             </p>
           </div>
           <Link
-            href="/services/website-design"
+            href="/services"
             className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider pb-1 relative"
           >
-            Our Services 
+            All Services
             <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-black/20" />
             <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full" />
@@ -77,7 +83,7 @@ export default function Services() {
         </div>
 
         <div className="relative flex flex-col gap-[15vh] md:gap-[25vh] pb-[10vh]">
-          {SERVICES.map((service, index) => {
+          {PILLARS.map((pillar, index) => {
             const yOffset = useTransform(
               scrollYProgress,
               [0, 1],
@@ -91,32 +97,35 @@ export default function Services() {
 
             return (
               <motion.div
-                key={service.title}
+                key={pillar.title}
                 style={{ y: yOffset, scale }}
-                className={`sticky top-24 md:top-32 w-full rounded-[2rem] overflow-hidden ${service.color} ${service.textColor} shadow-2xl`}
+                className={`sticky top-24 md:top-32 w-full rounded-[2rem] overflow-hidden ${pillar.color} ${pillar.textColor} shadow-2xl`}
               >
                 <div className="flex flex-col md:flex-row h-full max-h-[calc(100vh-7rem)] md:max-h-[calc(100vh-10rem)]">
                   <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center overflow-y-auto hide-scrollbar">
-                    <service.icon className="w-8 h-8 md:w-12 md:h-12 mb-6 md:mb-8 opacity-80 shrink-0" />
+                    <span className="text-xs font-semibold tracking-widest uppercase text-white/30 mb-4 shrink-0">
+                      {pillar.label}
+                    </span>
+                    <pillar.icon className="w-8 h-8 md:w-12 md:h-12 mb-6 md:mb-8 opacity-80 shrink-0" />
                     <h3 className="text-3xl md:text-5xl font-display font-bold mb-4 md:mb-6 leading-tight shrink-0">
-                      {service.title}
+                      {pillar.title}
                     </h3>
                     <p className="text-base md:text-lg opacity-80 mb-8 md:mb-12 leading-relaxed shrink-0">
-                      {service.description}
+                      {pillar.description}
                     </p>
                     <div className="shrink-0 pb-4 md:pb-0">
                       <Link
-                        href={service.link}
-                        className={`group inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105 ${service.buttonColor}`}
+                        href={pillar.link}
+                        className={`group inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105 ${pillar.buttonColor}`}
                       >
-                        Learn More <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+                        {pillar.buttonLabel} <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                       </Link>
                     </div>
                   </div>
                   <div className="w-full md:w-1/2 h-48 min-h-[200px] md:h-auto md:min-h-[400px] relative shrink-0">
                     <img
-                      src={service.image}
-                      alt={service.title}
+                      src={pillar.image}
+                      alt={pillar.title}
                       className="absolute inset-0 w-full h-full object-cover"
                       referrerPolicy="no-referrer"
                     />

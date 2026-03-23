@@ -1,100 +1,198 @@
 'use client';
 
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
-const POSTS = [
-  {
-    title: "Showing Up With Heart: Meet Our Refreshed Brand",
-    date: "02.19.2026",
-    image: "https://picsum.photos/seed/brand/800/600",
-    color: "from-pink-500/20 to-transparent",
-  },
-  {
-    title: "A Success Story: TechFlow Website",
-    date: "02.17.2026",
-    image: "https://picsum.photos/seed/success/800/600",
-    color: "from-blue-500/20 to-transparent",
-  },
-  {
-    title: "5 Strategic Ways to Use AI in Your Marketing",
-    date: "02.10.2026",
-    image: "https://picsum.photos/seed/ai-marketing/800/600",
-    color: "from-green-500/20 to-transparent",
-  },
-  {
-    title: "Is Your Website Enrollment-Ready for 2026?",
-    date: "01.27.2026",
-    image: "https://picsum.photos/seed/enrollment/800/600",
-    color: "from-yellow-500/20 to-transparent",
-  },
+// ─────────────────────────────────────────────────────────────────
+// RESEND SETUP — see src/app/api/subscribe/route.ts for full instructions
+//
+// Short version:
+// 1. Create a free account at resend.com
+// 2. Create an API key and an Audience called "Insights List"
+// 3. Add to your .env.local:
+//      RESEND_API_KEY=re_xxxxxxxxxxxx
+//      RESEND_AUDIENCE_ID=your_audience_id
+//      EMAIL_FROM=hello@nixcreative.com
+// ─────────────────────────────────────────────────────────────────
+
+const TOPICS = [
+  "SEO tips for local businesses",
+  "Social media that actually converts",
+  "AI tools for small business owners",
+  "Website design & conversion",
 ];
 
 export default function Insights() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error ?? "Something went wrong. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setStatus("error");
+    }
+  };
+
   return (
-    <section id="insights" className="py-32 overflow-hidden bg-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="max-w-2xl">
+    <section id="insights" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+
+          {/* Left — messaging */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h3 className="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-4">
               Insights
             </h3>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-6">
-              The latest.
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6 leading-tight">
+              Marketing knowledge,
+              <br />
+              <span className="text-[#88c222]">without the noise.</span>
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Explore expert perspectives designed to help you grow your brand
-              and stay ahead of the curve.
+            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              We're building out our insights library — practical marketing
+              content written specifically for service business owners.
+              No fluff, no recycled takes. Be the first to get it.
             </p>
-          </div>
-          <a
-            href="#insights"
-            className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider pb-1 relative"
-          >
-            See All Posts 
-            <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-black/20" />
-            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full" />
-          </a>
-        </div>
-      </div>
 
-      <div className="relative w-full overflow-x-auto hide-scrollbar pl-4 md:pl-8 lg:pl-[max(2rem,calc((100vw-80rem)/2))]">
-        <div className="flex gap-6 pb-8 pr-8 w-max">
-          {POSTS.map((post, index) => (
-            <motion.div
-              key={post.title}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                delay: index * 0.1,
-                duration: 0.6,
-                ease: "easeOut",
-              }}
-              className="w-[320px] md:w-[480px] group cursor-pointer"
-            >
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-6">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
-                />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t ${post.color} mix-blend-multiply`}
-                />
-              </div>
-              <div className="px-2">
-                <span className="text-sm font-medium text-gray-500 mb-3 block">
-                  {post.date}
-                </span>
-                <h3 className="text-2xl font-display font-bold text-gray-900 group-hover:text-gray-600 transition-colors leading-tight">
-                  {post.title}
-                </h3>
-              </div>
-            </motion.div>
-          ))}
+            {/* Topic previews */}
+            <div className="flex flex-col gap-3">
+              {TOPICS.map((topic, i) => (
+                <motion.div
+                  key={topic}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
+                  className="flex items-center gap-3 text-gray-600"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#b4ff39] shrink-0" />
+                  <span className="text-sm">{topic}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right — email capture */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div className="bg-[#111111] rounded-[2rem] p-8 md:p-10">
+              {status === "success" ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center text-center py-8"
+                >
+                  <div className="w-14 h-14 rounded-full bg-[#b4ff39] flex items-center justify-center mb-6">
+                    <Sparkles size={24} className="text-black" />
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white mb-3">
+                    You're on the list.
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    Check your inbox — we sent you a welcome email.
+                    We'll be in touch as soon as we publish.
+                  </p>
+                </motion.div>
+              ) : (
+                <>
+                  <div className="mb-8">
+                    <div className="inline-flex items-center gap-2 bg-[#b4ff39]/10 border border-[#b4ff39]/20 rounded-full px-4 py-1.5 mb-6">
+                      <Sparkles size={12} className="text-[#b4ff39]" />
+                      <span className="text-[#b4ff39] text-xs font-semibold tracking-wider uppercase">
+                        Coming soon
+                      </span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3">
+                      Get early access to our insights.
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      Join the list and be the first to receive marketing
+                      tips, case studies, and growth strategies built for
+                      service businesses like yours.
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label htmlFor="insights-email" className="block text-sm font-medium text-gray-400 mb-2 ml-1">
+                        Your email address
+                      </label>
+                      <input
+                        id="insights-email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="you@yourbusiness.com"
+                        required
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#b4ff39] focus:border-transparent transition-all hover:border-white/20"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={status === "loading"}
+                      className="w-full flex items-center justify-center gap-2 bg-[#b4ff39] text-black font-semibold rounded-2xl px-6 py-3.5 hover:bg-[#a3eb32] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {status === "loading" ? (
+                        "Subscribing..."
+                      ) : (
+                        <>
+                          Notify me when we publish
+                          <ArrowRight size={16} />
+                        </>
+                      )}
+                    </button>
+
+                    {status === "error" && (
+                      <p className="text-red-400 text-sm text-center">
+                        {errorMsg || "Something went wrong."}{" "}
+                        <a href="mailto:hello@nixcreative.com" className="underline">
+                          Email us directly.
+                        </a>
+                      </p>
+                    )}
+
+                    <p className="text-xs text-gray-600 text-center leading-relaxed">
+                      No spam. Unsubscribe anytime. We respect your inbox.
+                    </p>
+                  </form>
+                </>
+              )}
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
