@@ -8,36 +8,42 @@ import Link from 'next/link';
 const EXPERTISE_ITEMS = [
   {
     title: 'Website Design',
+    description: 'A professional website that works around the clock to attract new clients, build trust, and convert visitors — built for performance, not just looks.',
     image: '/images/expertise-website-design.jpg',
     color: 'from-blue-500/20 to-transparent',
     link: '/services/website-design',
   },
   {
     title: 'SEO',
+    description: 'Get found by customers who are actively searching for what you offer. We optimize your site and Google Business Profile so you rank where it counts.',
     image: '/images/expertise-seo.jpg',
     color: 'from-indigo-500/20 to-transparent',
     link: '/services/seo',
   },
   {
     title: 'Social Media',
+    description: 'Consistent, on-brand social media presence across the platforms your customers actually use — content that builds awareness and drives real engagement.',
     image: '/images/expertise-social-media.jpg',
     color: 'from-purple-500/20 to-transparent',
     link: '/services/social-media',
   },
   {
     title: 'Brand Identity',
+    description: 'A cohesive brand — logo, colors, typography, and voice — that makes your business look established, professional, and worth hiring before a word is spoken.',
     image: '/images/expertise-brand-identity.jpg',
     color: 'from-orange-500/20 to-transparent',
     link: '/services/branding',
   },
   {
     title: 'Data & Analytics',
+    description: "Know exactly what's working and what isn't. We turn your marketing data into clear insights so every dollar you spend is backed by evidence, not guesswork.",
     image: '/images/expertise-data-analytics.jpg',
     color: 'from-green-500/20 to-transparent',
     link: '/services/analytics',
   },
   {
     title: 'AI Automations',
+    description: 'Stop losing hours to repetitive tasks. We build custom automations for follow-ups, scheduling, lead routing, and reporting so your business runs leaner and scales faster.',
     image: '/images/expertise-ai-automations.jpg',
     color: 'from-pink-500/20 to-transparent',
     link: '/services/ai-automations',
@@ -59,6 +65,8 @@ export default function Expertise() {
     };
 
     updateScrollRange();
+    // Slight delay to ensure fonts/images are calculated
+    setTimeout(updateScrollRange, 100);
     window.addEventListener('resize', updateScrollRange);
     return () => window.removeEventListener('resize', updateScrollRange);
   }, []);
@@ -82,7 +90,7 @@ export default function Expertise() {
                 The value of our expertise.
               </h2>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-xl">
-                Our deep industry knowledge lets us quickly focus on your key questions and challenges. We understand the complexity of your organization.
+                Six core disciplines, one focused goal — more clients for your business. Every service we offer is chosen because it moves the needle for service-area businesses and local brands ready to grow.
               </p>
             </div>
             <Link
@@ -121,6 +129,9 @@ export default function Expertise() {
                 <h3 className="text-xl md:text-3xl font-display font-bold text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                   {item.title}
                 </h3>
+                <p className="text-sm text-gray-300 leading-relaxed mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 line-clamp-3">
+                  {item.description}
+                </p>
                 <div className="h-1 w-12 bg-[#b4ff39] mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100" />
               </div>
             </Link>
