@@ -1,14 +1,35 @@
 'use client';
 
-import { motion, useMotionValue, useSpring } from "motion/react";
-import { Play } from "lucide-react";
+import { motion, useMotionValue, useSpring, useInView } from "motion/react";
+import { Volume2, VolumeX, Maximize2 } from "lucide-react";
 import { useState, useRef } from "react";
 import { VideoModal } from "../ui/VideoModal";
 
 export default function Hero() {
+  const [isMuted, setIsMuted] = useState(true);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [modalStartTime, setModalStartTime] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const hasRestartedRef = useRef(false);
   const [isHovered, setIsHovered] = useState(false);
+  const isInView = useInView(containerRef);
+
+  const handleVideoToggle = () => {
+    if (isMuted) {
+      if (videoRef.current && !hasRestartedRef.current) {
+        videoRef.current.currentTime = 0;
+        hasRestartedRef.current = true;
+      }
+      setIsMuted(false);
+    } else {
+      if (videoRef.current) {
+        setModalStartTime(videoRef.current.currentTime);
+      }
+      setIsVideoOpen(true);
+      setIsMuted(true); // Re-mute the background video when modal opens
+    }
+  };
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -57,21 +78,24 @@ export default function Hero() {
           onMouseMove={handleMouseMove}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onClick={() => setIsVideoOpen(true)}
+          onClick={handleVideoToggle}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full h-[40vh] md:h-[70vh] min-h-[300px] md:min-h-[500px] rounded-[2rem] overflow-hidden bg-gray-200 cursor-pointer group"
         >
-          <img
-            src="https://picsum.photos/seed/agency/1920/1080?blur=2"
-            alt="Team collaborating"
+          <video
+            ref={videoRef}
+            src="/nixheader.mov"
+            autoPlay
+            loop
+            muted={isMuted || !isInView}
+            playsInline
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-black/20 transition-colors duration-700 group-hover:bg-black/40" />
 
-          {/* Floating play button that follows cursor (Hidden on mobile) */}
+          {/* Floating volume button that follows cursor (Hidden on mobile) */}
           <motion.div
             style={{
               x: cursorXSpring,
@@ -83,20 +107,20 @@ export default function Hero() {
             }}
             className="hidden md:flex absolute top-0 left-0 z-20 items-center justify-center w-24 h-24 bg-[#b4ff39] text-black rounded-full shadow-2xl pointer-events-none"
           >
-            <Play size={32} fill="currentColor" className="ml-2" />
+            {isMuted ? <VolumeX size={32} /> : <Maximize2 size={32} />}
           </motion.div>
 
-          {/* Static play button for mobile */}
+          {/* Static volume button for mobile */}
           <div className="absolute inset-0 flex md:hidden items-center justify-center z-10 pointer-events-none">
             <div className="flex items-center justify-center w-16 h-16 bg-[#b4ff39] text-black rounded-full shadow-xl">
-              <Play size={24} fill="currentColor" className="ml-1" />
+              {isMuted ? <VolumeX size={24} /> : <Maximize2 size={24} />}
             </div>
           </div>
         </motion.div>
 
         {/* Text box */}
         <div 
-          className="relative md:absolute md:top-16 md:left-16 w-full md:max-w-md z-30 cursor-auto"
+          className="relative md:absolute md:top-16 md:right-16 w-full md:max-w-md z-30 cursor-auto"
           onMouseEnter={() => setIsHovered(false)} // hide play button when hovering over the text box on desktop
           onMouseLeave={() => setIsHovered(true)}
         >
@@ -143,7 +167,8 @@ export default function Hero() {
       <VideoModal
         isOpen={isVideoOpen}
         onClose={() => setIsVideoOpen(false)}
-        videoSrc="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+        videoSrc="/nixheader.mov"
+        startTime={modalStartTime}
       />
     </section>
   );

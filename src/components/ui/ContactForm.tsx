@@ -257,10 +257,10 @@ export function ContactForm({
                 Submit Inquiry
               </Button>
               <a 
-                href="mailto:support@nixcreative.com" 
+                href="mailto:support@nixcreative.net" 
                 className="text-sm font-medium text-gray-400 hover:text-white transition-colors underline underline-offset-4"
               >
-                Or email us at support@nixcreative.com
+                Or email us at support@nixcreative.net
               </a>
             </div>
             <p className="text-xs text-gray-400 text-center md:text-left leading-relaxed max-w-2xl">

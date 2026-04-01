@@ -8,9 +8,10 @@ interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
   videoSrc: string;
+  startTime?: number;
 }
 
-export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
+export function VideoModal({ isOpen, onClose, videoSrc, startTime }: VideoModalProps) {
   // Prevent scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -55,6 +56,11 @@ export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
                 controls
                 className="w-full h-full object-cover"
                 controlsList="nodownload"
+                onLoadedMetadata={(e) => {
+                  if (startTime) {
+                    e.currentTarget.currentTime = startTime;
+                  }
+                }}
               >
                 Your browser does not support the video tag.
               </video>

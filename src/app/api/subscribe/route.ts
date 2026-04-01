@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // 3. Add to your .env.local:
 //      RESEND_API_KEY=re_xxxxxxxxxxxx
 //      RESEND_AUDIENCE_ID=your_audience_id   (from Resend → Audiences)
-//      EMAIL_FROM=hello@nixcreative.com       (must be a verified domain)
+//      EMAIL_FROM=hello@nixcreative.net       (must be a verified domain)
 //
 // 4. In Resend, go to Audiences → Create Audience → name it "Insights List"
 //    Copy the Audience ID and paste it as RESEND_AUDIENCE_ID
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.RESEND_API_KEY;
     const audienceId = process.env.RESEND_AUDIENCE_ID;
-    const fromEmail = process.env.EMAIL_FROM ?? 'hello@nixcreative.com';
+    const fromEmail = process.env.EMAIL_FROM ?? 'hello@nixcreative.net';
 
     if (!apiKey) {
       console.error('RESEND_API_KEY is not set');
@@ -159,8 +159,8 @@ function welcomeEmailHtml(email: string): string {
               <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="background-color:#b4ff39;border-radius:100px;padding:12px 28px;">
-                    <a href="https://nixcreative.com" style="font-size:14px;font-weight:600;color:#111111;text-decoration:none;">
-                      Visit nixcreative.com →
+                    <a href="https://nixcreative.net" style="font-size:14px;font-weight:600;color:#111111;text-decoration:none;">
+                      Visit nixcreative.net →
                     </a>
                   </td>
                 </tr>
@@ -173,7 +173,7 @@ function welcomeEmailHtml(email: string): string {
           <tr>
             <td style="padding-top:24px;">
               <p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;">
-                You're receiving this because ${email} signed up at nixcreative.com.
+                You're receiving this because ${email} signed up at nixcreative.net.
                 <br/>
                 No spam. <a href="#" style="color:#9ca3af;">Unsubscribe anytime.</a>
               </p>

@@ -13,7 +13,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 // 3. Add to your .env.local:
 //      RESEND_API_KEY=re_xxxxxxxxxxxx
 //      RESEND_AUDIENCE_ID=your_audience_id
-//      EMAIL_FROM=hello@nixcreative.com
+//      EMAIL_FROM=hello@nixcreative.net
 // ─────────────────────────────────────────────────────────────────
 
 const TOPICS = [
@@ -178,7 +178,7 @@ export default function Insights() {
                     {status === "error" && (
                       <p className="text-red-400 text-sm text-center">
                         {errorMsg || "Something went wrong."}{" "}
-                        <a href="mailto:hello@nixcreative.com" className="underline">
+                        <a href="mailto:hello@nixcreative.net" className="underline">
                           Email us directly.
                         </a>
                       </p>

@@ -29,9 +29,9 @@ const LOCAL_BUSINESS_SCHEMA = {
   "@type": "LocalBusiness",
   "name": "Nix Creative",
   "description": "Digital marketing agency in Myrtle Beach, SC serving service businesses across the U.S. with website design, SEO, social media, branding, and AI automations.",
-  "url": "https://nixcreative.com",
+  "url": "https://nixcreative.net",
   "telephone": "+18546007030",
-  "email": "hello@nixcreative.com",
+  "email": "hello@nixcreative.net",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Myrtle Beach",
@@ -201,11 +201,11 @@ export default function Footer() {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="mailto:hello@nixcreative.com"
+                    href="mailto:hello@nixcreative.net"
                     className="flex items-start gap-3 text-gray-400 text-sm hover:text-[#b4ff39] transition-colors group"
                   >
                     <Mail size={14} className="mt-0.5 shrink-0 group-hover:text-[#b4ff39]" />
-                    hello@nixcreative.com
+                    hello@nixcreative.net
                   </a>
                 </li>
                 <li>
@@ -241,19 +241,16 @@ export default function Footer() {
             </p>
             <ul className="flex gap-6">
               <li>
-                {/* TODO: Create /privacy-policy page */}
                 <Link href="/privacy-policy" className="hover:text-gray-400 transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                {/* TODO: Create /terms-of-service page */}
                 <Link href="/terms-of-service" className="hover:text-gray-400 transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                {/* TODO: Create /accessibility page */}
                 <Link href="/accessibility" className="hover:text-gray-400 transition-colors">
                   Accessibility
                 </Link>
