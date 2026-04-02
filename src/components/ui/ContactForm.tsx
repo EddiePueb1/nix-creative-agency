@@ -25,6 +25,43 @@ export function ContactForm({
   className = ""
 }: ContactFormProps) {
   const [showOtherBusiness, setShowOtherBusiness] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      // Append the public access key to the frontend request
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
+      formData.append("access_key", accessKey);
+      
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("success");
+        form.reset();
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        console.error("Submission failed. Web3Forms message:", data.message);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Fetch Exception:", error);
+      setStatus("error");
+    }
+  }
 
   return (
     <motion.div
@@ -40,7 +77,7 @@ export function ContactForm({
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">{subtext}</p>
         </div>
 
-        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Personal & Business Name */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
@@ -253,8 +290,13 @@ export function ContactForm({
           {/* Submit and Disclosure */}
           <div className="pt-4 flex flex-col items-center md:items-start space-y-4">
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
-              <Button type="submit" variant="primary" className="w-full sm:w-auto text-base py-3.5 px-10">
-                Submit Inquiry
+              <Button 
+                type="submit" 
+                variant="primary" 
+                className="w-full sm:w-auto text-base py-3.5 px-10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={status === "submitting" || status === "success"}
+              >
+                {status === "submitting" ? "Sending..." : status === "success" ? "Sent!" : status === "error" ? "Error! Try Again" : "Submit Inquiry"}
               </Button>
               <a 
                 href="mailto:support@nixcreative.net" 
@@ -263,6 +305,24 @@ export function ContactForm({
                 Or email us at support@nixcreative.net
               </a>
             </div>
+            {status === "success" && (
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-[#88c222] font-medium"
+              >
+                Thank you! Your message has been sent successfully. We will be in touch shortly.
+              </motion.p>
+            )}
+            {status === "error" && (
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-400 font-medium"
+              >
+                Oops! Something went wrong. Please try emailing us directly instead.
+              </motion.p>
+            )}
             <p className="text-xs text-gray-400 text-center md:text-left leading-relaxed max-w-2xl">
               *If you provide your phone number or your email address, you're agreeing to receive an informational or follow-up text from Nix Creative. Message frequency might vary. Message and data rates may apply. Reply STOP to opt out.
             </p>

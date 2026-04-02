@@ -5,28 +5,28 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import { JourneyScroll } from '@/components/about/JourneyScroll';
 
-// Placeholder data that you can fill in later
+// Placeholder data that you can fill in late
 const ABOUT_DATA = {
-  title: "About Us",
-  subtitle: "Our Story",
-  storyText: "Write your company or personal story here. Explain how you started, why you started, and what drives you every day. This is the perfect place to connect with your audience on a personal level and build trust.",
-  mainImage: "https://picsum.photos/seed/about-main/1200/600",
-  
+  title: "About Nix Creative",
+  subtitle: "Built from Both Worlds.",
+  storyText: "I didn't start in marketing. I started where most people wouldn't expect — in the trades, in construction, in the kind of work where you show up early, get your hands dirty, and figure things out as you go. Then college opened a different door. I walked into tech, into big consulting, into rooms where some of the largest companies in the world were making decisions based on data, strategy, and systems I'd never seen before. And somewhere in those rooms, a question kept nagging at me: why do only the big guys get access to this?",
+  mainImage: "/images/about-story-banner.png",
+
   values: [
     {
       id: 1,
-      title: "Value One",
-      description: "Describe a core value of your company. What do you stand for?",
+      title: "Data Tells the Truth",
+      description: "Every decision we make is backed by real numbers. Not guesses, not trends — actual data about how your customers find you, what they see, and what makes them act.",
     },
     {
       id: 2,
-      title: "Value Two",
-      description: "Describe another core value. How does this benefit your clients?",
+      title: "Strategy Before Tactics",
+      description: "Anyone can run an ad or build a website. We build systems. Every move we make is connected to a bigger picture designed to grow your business, not just your follower count.",
     },
     {
       id: 3,
-      title: "Value Three",
-      description: "Describe a third core value. What makes your approach unique?",
+      title: "You Deserve a Seat at the Table",
+      description: "The tools and strategies that Fortune 500 companies use aren't out of reach. We bring that same level of thinking to service businesses and local companies ready to compete.",
     }
   ]
 };
@@ -37,7 +37,7 @@ export default function AboutPage() {
       <Container>
         {/* Header Section */}
         <div className="max-w-4xl mx-auto mb-16">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -45,7 +45,7 @@ export default function AboutPage() {
           >
             {ABOUT_DATA.title}
           </motion.h1>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -56,7 +56,7 @@ export default function AboutPage() {
         </div>
 
         {/* Story Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -65,10 +65,10 @@ export default function AboutPage() {
           <p className="text-lg text-gray-600 leading-relaxed mb-8">
             {ABOUT_DATA.storyText}
           </p>
-          
+
           <div className="w-full aspect-[2/1] relative rounded-2xl overflow-hidden bg-gray-200">
-            <img 
-              src={ABOUT_DATA.mainImage} 
+            <img
+              src={ABOUT_DATA.mainImage}
               alt="Our Story"
               className="object-cover w-full h-full"
             />
@@ -80,7 +80,7 @@ export default function AboutPage() {
 
         {/* Values / Cards Section */}
         <div className="max-w-6xl mx-auto">
-          <motion.h3 
+          <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -89,10 +89,10 @@ export default function AboutPage() {
           >
             Our Core Values
           </motion.h3>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {ABOUT_DATA.values.map((value, index) => (
-              <motion.div 
+              <motion.div
                 key={value.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

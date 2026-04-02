@@ -147,8 +147,10 @@ function welcomeEmailHtml(email: string): string {
                   <td style="padding:6px 0;">
                     <table cellpadding="0" cellspacing="0">
                       <tr>
-                        <td style="width:8px;height:8px;background-color:#b4ff39;border-radius:50%;vertical-align:middle;padding-right:12px;"></td>
-                        <td style="font-size:14px;color:#d1d5db;vertical-align:middle;">${topic}</td>
+                        <td width="20" valign="middle">
+                          <div style="width:6px;height:6px;background-color:#b4ff39;border-radius:50%;margin:0;"></div>
+                        </td>
+                        <td style="font-size:14px;color:#d1d5db;vertical-align:middle;line-height:1.4;">${topic}</td>
                       </tr>
                     </table>
                   </td>

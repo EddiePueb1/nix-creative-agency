@@ -4,30 +4,56 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { Container } from '@/components/ui/Container';
 
+// const JOURNEY_STEPS = [
+//   {
+//     year: "Phase 1: The Beginning",
+//     title: "Starting where most people do — with hard work.",
+//     description: "Before tech, before consulting, there was the trades. Construction. Service work. The kind of industries where you earn your reputation by showing up and delivering — no shortcuts, no fluff. That foundation never left me. It's still how I run Nix Creative today.",
+//     image: "/images/about-journey-1.png",
+//   },
+//   {
+//     year: "Phase 2: A New World",
+//     title: "College opened a door I didn't know existed.",
+//     description: "Stepping into tech felt like learning a different language. Software engineering, data analysis, infrastructure, front-end development — suddenly I was working alongside some of the sharpest minds in the industry at firms like PwC and in big tech environments. I learned how large companies actually scale: not by working harder, but by building smarter systems.",
+//     image: "/images/about-journey-2.png",
+//   },
+//   {
+//     year: "Phase 3: The Question",
+//     title: "Why do only the big guys get access to this?",
+//     description: "Sitting in those boardrooms and strategy sessions, I kept thinking about the contractors, the cleaners, the landscapers — the businesses I grew up around. They were working just as hard, but without any of the tools, data, or strategy that big corporations take for granted. That gap felt wrong. And fixable.",
+//     image: "/images/about-journey-3.png",
+//   },
+//   {
+//     year: "Phase 4: Nix Creative",
+//     title: "Bringing big-business thinking to businesses that deserve it.",
+//     description: "That's why Nix Creative exists. To give service businesses — the ones that actually keep communities running — access to the same caliber of marketing strategy, data analysis, and digital infrastructure that Fortune 500 companies pay millions for. You don't need to be big to compete. You just need the right people in your corner.",
+//     image: "/images/about-journey-4.png",
+//   }
+// ]; 
 const JOURNEY_STEPS = [
   {
     year: "Phase 1: The Spark",
     title: "How it all started.",
     description: "Every great agency starts with a simple idea: things can be done better. We noticed a gap in the market where creativity was disconnected from actual business growth.",
-    image: "https://picsum.photos/seed/phase1/800/600",
+    image: "/images/about-journey-1.png",
   },
   {
     year: "Phase 2: Building the Foundation",
     title: "Assembling the team.",
     description: "We brought together a group of passionate designers, developers, and strategists. The goal was to build a collective that genuinely cared about client outcomes.",
-    image: "https://picsum.photos/seed/phase2/800/600",
+    image: "/images/about-journey-2.png",
   },
   {
     year: "Phase 3: Scaling Impact",
     title: "Taking things to the next level.",
     description: "As our client base grew, so did our capabilities. We expanded from simple web design into comprehensive, data-driven marketing ecosystems.",
-    image: "https://picsum.photos/seed/phase3/800/600",
+    image: "/images/about-journey-3.png",
   },
   {
     year: "Phase 4: The Future",
     title: "Continuous evolution.",
     description: "Today, we continue to push boundaries, leveraging cutting-edge technology and timeless design principles to build brands that lead their industries.",
-    image: "https://picsum.photos/seed/phase4/800/600",
+    image: "/images/about-journey-4.png",
   }
 ];
 
@@ -150,7 +176,7 @@ export function JourneyScroll() {
                       transition={{ duration: 0.6, ease: "easeOut" }}
                       className="bg-white p-8 md:bg-white/80 md:backdrop-blur-md rounded-3xl shadow-xl border border-gray-100 md:border-white hover:shadow-2xl transition-all duration-300"
                     >
-                      <span className="text-sm font-bold text-[#b4ff39] uppercase tracking-wider mb-2 block drop-shadow-sm">
+                      <span className="inline-block text-xs font-bold text-gray-900 bg-[#b4ff39] px-3 py-1.5 rounded-full uppercase tracking-wider mb-4 shadow-sm ring-1 ring-black/5">
                         {step.year}
                       </span>
                       <h4 className="text-2xl font-display font-bold text-gray-900 mb-4">
