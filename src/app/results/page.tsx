@@ -5,8 +5,21 @@ import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
-// Expanded list of projects to showcase on the dedicated page
 const PROJECTS = [
+  {
+    client: "Landscaping Unlimited LLC",
+    title: "From invisible to a 617% traffic spike.",
+    tags: ["Website Design", "Local SEO", "Social Media"],
+    image: "/images/results/landscaping/landscaping-hero.png",
+    link: "/results/landscaping-unlimited"
+  },
+  {
+    client: "Mendoza Cleaning Services",
+    title: "From zero brand identity to a complete foundational system.",
+    tags: ["Brand Identity", "Print Materials", "Apparel", "Social Media"],
+    image: "/images/results/mendoza/business-card1.png",
+    link: "/results/mendoza-cleaning"
+  },
   {
     client: "TechFlow",
     title: "Making waves with AI Automations.",

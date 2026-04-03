@@ -3,11 +3,11 @@ import type { ServiceData } from '../services';
 export const analytics: ServiceData = {
   id: 'analytics',
   hero: {
-    subtitle: 'Data-driven insights for organizations that want to grow',
+    subtitle: 'Data-driven insights for service businesses that want to grow',
     title: 'Analytics & Performance.',
     heading2: 'Measure What Matters',
     paragraph1:
-      'At Nix Creative, we turn website and marketing data into actionable insights that help organizations grow.',
+      'At Nix Creative, we turn website and marketing data into actionable insights that help service businesses grow.',
     paragraph2:
       'From Google Analytics implementation to advanced event tracking and performance dashboards, we make sure every important interaction is measured and understood.',
     image: '/images/expertise-data-analytics.jpg',
@@ -75,6 +75,19 @@ export const analytics: ServiceData = {
           'A/B testing insights and recommendations',
           'Data-driven strategy adjustments'
         ]
+      },
+      {
+        title: 'Your Growth Roadmap',
+        paragraphs: [
+          'Here is exactly what the process looks like from start to finish — and where other services can multiply your results along the way.'
+        ],
+        bullets: [
+          'Step 1 — Define the exact actions that lead to revenue for your business',
+          'Step 2 — Implement proper tracking and goal conversion architecture',
+          'Step 3 — Filter and optimize leads automatically → Save time by pushing this data through AI Automations. Learn more: /services/ai-automations',
+          'Step 4 — Leverage data to build content that ranks → Bring in highly targeted traffic with SEO. Learn more: /services/seo',
+          'Step 5 — Create a frictionless digital experience for visitors → Ensure the highest conversion rates possible with Website Design. Learn more: /services/website-design'
+        ]
       }
     ]
   },
@@ -112,29 +125,7 @@ export const analytics: ServiceData = {
   work: {
     title: 'Data-Driven Success',
     subtitle: 'How analytics helped organizations improve results',
-    items: [
-      {
-        client: 'Regional Arts Organization',
-        title: 'Tracking the visitor journey to increase ticket purchases.',
-        tags: ['Google Analytics', 'Event Tracking', 'Dashboards'],
-        image: 'https://picsum.photos/seed/analyticsarts/800/600',
-        color: 'from-indigo-500/80 to-indigo-500/20'
-      },
-      {
-        client: 'Private School Admissions',
-        title: 'Understanding the application funnel from inquiry to enrollment.',
-        tags: ['Conversion Tracking', 'Funnels', 'Performance Reporting'],
-        image: 'https://picsum.photos/seed/analyticseducation/800/600',
-        color: 'from-blue-500/80 to-blue-500/20'
-      },
-      {
-        client: 'Tourism Destination',
-        title: 'Measuring marketing campaign performance across channels.',
-        tags: ['Campaign Tracking', 'Traffic Attribution', 'Looker Studio'],
-        image: 'https://picsum.photos/seed/analyticstourism/800/600',
-        color: 'from-green-500/80 to-green-500/20'
-      }
-    ]
+    items: []
   },
 
   capabilities: {
@@ -184,29 +175,29 @@ export const analytics: ServiceData = {
 
   industries: [
     {
-      title: 'Arts & Culture',
-      description: 'Tracking attendance, ticket sales, and memberships',
-      image: 'https://picsum.photos/seed/analyticsartsindustry/600/400'
+      title: 'Contractors & Home Services',
+      description: 'Plumbers, electricians, HVAC, roofers, and general contractors',
+      image: '/images/industry-contractors.jpg'
     },
     {
-      title: 'Education',
-      description: 'Measuring admissions funnels and inquiry conversions',
-      image: 'https://picsum.photos/seed/analyticseducationindustry/600/400'
+      title: 'New & Growing Businesses',
+      description: 'Startups and first-time business owners building their presence from scratch',
+      image: '/images/industry-new-business.jpg'
     },
     {
-      title: 'Non-Profits',
-      description: 'Understanding donations, volunteer engagement, and advocacy impact',
-      image: 'https://picsum.photos/seed/analyticsnonprofitindustry/600/400'
+      title: 'Local Shops & Mobile Services',
+      description: 'Retail shops, detailers, food businesses, and service providers on the move',
+      image: '/images/industry-local-shops.jpg'
     },
     {
-      title: 'Tourism',
-      description: 'Analyzing travel campaigns, visitor behavior, and booking interest',
-      image: 'https://picsum.photos/seed/analyticstourismindustry/600/400'
+      title: 'Cleaning & Maintenance',
+      description: 'Residential and commercial cleaning, janitorial, and property maintenance',
+      image: '/images/industry-cleaning.jpg'
     },
     {
-      title: 'Ambitious Brands',
-      description: 'Measuring marketing ROI, customer journeys, and conversion performance',
-      image: 'https://picsum.photos/seed/analyticsbrandsindustry/600/400'
+      title: 'Landscaping & Outdoor',
+      description: 'Lawn care, landscaping, tree services, and outdoor contractors',
+      image: '/images/industry-landscaping.jpg'
     }
   ]
 };

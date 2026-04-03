@@ -1,8 +1,9 @@
 'use client';
 
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 import { ServiceData } from '../../data/services';
 
@@ -58,9 +59,48 @@ export default function ServiceApproach({ data }: ServiceApproachProps) {
                         ))}
                         {item.bullets && item.bullets.length > 0 && (
                           <ul className="list-disc pl-5 space-y-2">
-                            {item.bullets.map((bullet, bIndex) => (
-                              <li key={bIndex}>{bullet}</li>
-                            ))}
+                            {item.bullets.map((bullet, bIndex) => {
+                              if (bullet.includes('/services/')) {
+                                const urlMatch = bullet.match(/(\/services\/[\w-]+)/);
+                                if (urlMatch) {
+                                  const linkUrl = urlMatch[1];
+                                  
+                                  let textPart = bullet.replace(linkUrl, '').trim();
+                                  textPart = textPart.replace(/Learn more:?$/i, '').trim();
+
+                                  const getServiceName = (url: string) => {
+                                    const slug = url.split('/').pop() || '';
+                                    switch(slug) {
+                                      case 'seo': return 'SEO';
+                                      case 'ai-automations': return 'AI Automations';
+                                      case 'website-design': return 'Website Design';
+                                      case 'branding': return 'Brand Identity';
+                                      case 'social-media': return 'Social Media';
+                                      case 'analytics': return 'Data & Analytics';
+                                      default: return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                                    }
+                                  };
+
+                                  return (
+                                    <li key={bIndex} className="py-2">
+                                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 leading-relaxed">
+                                        <span className="flex-1">{textPart}</span>
+                                        <Link 
+                                          href={linkUrl}
+                                          className="shrink-0 mx-auto md:mx-0 inline-flex items-center gap-2 bg-gray-100 text-[#111111] hover:bg-[#b4ff39] px-5 py-2.5 rounded-full text-sm font-semibold transition-colors group border border-transparent hover:border-[#88c222]/20 shadow-sm whitespace-nowrap"
+                                        >
+                                          {getServiceName(linkUrl)}
+                                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                        </Link>
+                                      </div>
+                                    </li>
+                                  );
+                                }
+                              }
+                              return (
+                                <li key={bIndex} className="leading-relaxed">{bullet}</li>
+                              );
+                            })}
                           </ul>
                         )}
                       </div>

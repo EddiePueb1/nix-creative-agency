@@ -26,7 +26,7 @@ export default async function ServicePage({
       <ServiceHero data={data.hero} />
       <ServiceIndustries industries={data.industries} />
       <ServiceApproach data={data.approach} />
-      <ServiceWork data={data.work} />
+      {/* <ServiceWork data={data.work} /> */}
       <ServiceCapabilities data={data.capabilities} />
       <ServiceStats data={data.stats} />
     </main>

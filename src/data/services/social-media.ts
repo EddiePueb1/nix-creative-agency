@@ -3,7 +3,7 @@ import type { ServiceData } from '../services';
 export const socialMedia: ServiceData = {
   id: 'social-media',
   hero: {
-    subtitle: 'Social strategies for ambitious brands, tourism, arts, and nonprofits',
+    subtitle: 'Social strategies for local service sectors and ambitious brands',
     title: 'Social Media Management.',
     heading2: 'Built for Engagement',
     paragraph1:
@@ -73,6 +73,19 @@ export const socialMedia: ServiceData = {
           'Campaign performance analysis and optimization',
           'Content testing to identify high-performing formats'
         ]
+      },
+      {
+        title: 'Your Growth Roadmap',
+        paragraphs: [
+          'Here is exactly what the process looks like from start to finish — and where other services can multiply your results along the way.'
+        ],
+        bullets: [
+          'Step 1 — Understand your audience and map the strategy',
+          'Step 2 — Establish visual identity across social channels → Align with a proper Brand Kit. Learn more: /services/branding',
+          'Step 3 — Build a content calendar and begin publishing',
+          'Step 4 — Automate the heavy lifting → Queue posts automatically with AI Automations. Learn more: /services/ai-automations',
+          'Step 5 — Track exactly what leads to revenue → Follow the numbers with Analytics. Learn more: /services/analytics'
+        ]
       }
     ]
   },
@@ -110,29 +123,7 @@ export const socialMedia: ServiceData = {
   work: {
     title: 'Social Media Campaigns',
     subtitle: 'Examples of brands growing their audience',
-    items: [
-      {
-        client: 'Regional Arts Festival',
-        title: 'Turning a seasonal event into a year-round community.',
-        tags: ['Instagram', 'Video Content', 'Community Management'],
-        image: 'https://picsum.photos/seed/artfestival/800/600',
-        color: 'from-pink-500/80 to-pink-500/20'
-      },
-      {
-        client: 'Boutique Travel Brand',
-        title: 'Story-driven content that inspired new travel bookings.',
-        tags: ['Tourism', 'Short Form Video', 'Influencer Collaboration'],
-        image: 'https://picsum.photos/seed/travelbrand/800/600',
-        color: 'from-blue-500/80 to-blue-500/20'
-      },
-      {
-        client: 'Local Coffee Roaster',
-        title: 'Building an engaged digital community around coffee culture.',
-        tags: ['TikTok', 'Reels', 'Brand Storytelling'],
-        image: 'https://picsum.photos/seed/coffeecommunity/800/600',
-        color: 'from-orange-500/80 to-orange-500/20'
-      }
-    ]
+    items: []
   },
 
   capabilities: {
@@ -184,29 +175,29 @@ export const socialMedia: ServiceData = {
 
   industries: [
     {
-      title: 'Arts & Culture',
-      description: 'Events, exhibitions, and community storytelling',
-      image: 'https://picsum.photos/seed/arts-social/600/400'
+      title: 'Contractors & Home Services',
+      description: 'Plumbers, electricians, HVAC, roofers, and general contractors',
+      image: '/images/industry-contractors.jpg'
     },
     {
-      title: 'Tourism',
-      description: 'Destination storytelling and travel inspiration',
-      image: 'https://picsum.photos/seed/tourism-social/600/400'
+      title: 'New & Growing Businesses',
+      description: 'Startups and first-time business owners building their presence from scratch',
+      image: '/images/industry-new-business.jpg'
     },
     {
-      title: 'Education',
-      description: 'Student life, admissions, and institutional storytelling',
-      image: 'https://picsum.photos/seed/education-social/600/400'
+      title: 'Local Shops & Mobile Services',
+      description: 'Retail shops, detailers, food businesses, and service providers on the move',
+      image: '/images/industry-local-shops.jpg'
     },
     {
-      title: 'Non-Profits',
-      description: 'Advocacy, fundraising, and community engagement',
-      image: 'https://picsum.photos/seed/nonprofit-social/600/400'
+      title: 'Cleaning & Maintenance',
+      description: 'Residential and commercial cleaning, janitorial, and property maintenance',
+      image: '/images/industry-cleaning.jpg'
     },
     {
-      title: 'Ambitious Brands',
-      description: 'Product storytelling, awareness, and audience growth',
-      image: 'https://picsum.photos/seed/brand-social/600/400'
+      title: 'Landscaping & Outdoor',
+      description: 'Lawn care, landscaping, tree services, and outdoor contractors',
+      image: '/images/industry-landscaping.jpg'
     }
   ]
 };
