@@ -77,7 +77,7 @@ export default function Insights() {
               <span className="text-[#88c222]">without the noise.</span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              We're building out our insights library — practical marketing
+              Nix Creative is building out our insights library — practical marketing
               content written specifically for service business owners.
               No fluff, no recycled takes. Be the first to get it.
             </p>

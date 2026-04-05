@@ -90,7 +90,7 @@ export default function Expertise() {
                 The value of our expertise.
               </h2>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-xl">
-                Six core disciplines, one focused goal — more clients for your business. Every service we offer is chosen because it moves the needle for service-area businesses and local brands ready to grow.
+                Six core disciplines, one focused goal — more clients for your business. Every service Nix Creative offers is chosen because it moves the needle for service-area businesses and local brands ready to grow.
               </p>
             </div>
             <Link

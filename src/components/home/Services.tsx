@@ -66,7 +66,7 @@ export default function Services() {
               Three bets we make for every client.
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Every agency offers services. We operate by principles. These
+              Every agency offers services. Nix Creative operates by principles. These
               three beliefs shape every strategy, every build, and every
               decision we make on your behalf.
             </p>

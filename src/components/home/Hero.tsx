@@ -131,13 +131,13 @@ export default function Hero() {
             className="md:bg-white md:rounded-[2rem] pt-4 md:p-8 md:shadow-xl w-full"
           >
             <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 leading-tight mb-4">
-              Trusted digital marketing agency in Myrtle Beach
+              Nix Creative — your trusted digital marketing agency in Myrtle Beach
             </h1>
             <p className="text-gray-600 text-lg mb-3">
-              Serving service businesses across the U.S. with consistent growth, less hassle, more clarity, and more clients for driven business owners.
+              Nix Creative serves service businesses across the U.S. with consistent growth, less hassle, more clarity, and more clients for driven business owners.
             </p>
             <p className="text-gray-500 text-base mb-6">
-              Whether you're a contractor, home service provider, or local business ready to scale — we build the digital foundation that gets you found, builds trust, and turns visitors into paying clients.
+              Whether you're a contractor, home service provider, or local business ready to scale — Nix Creative builds the digital foundation that gets you found, builds trust, and turns visitors into paying clients.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <motion.a 
