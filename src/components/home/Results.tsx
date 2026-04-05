@@ -105,7 +105,7 @@ export default function Results() {
         {/* Client logos row */}
         <div className="mb-16">
           <p className="text-xs font-semibold tracking-widest uppercase text-gray-600 mb-8">
-            Trusted by
+            Trusted by — Nix Creative clients
           </p>
           <div className="flex flex-wrap gap-4">
             {CLIENTS.map((client, i) => (

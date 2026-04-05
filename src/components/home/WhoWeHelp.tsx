@@ -39,10 +39,10 @@ export default function WhoWeHelp() {
             Built for businesses that are ready to grow.
           </h2>
           <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-            We work with service businesses and local brands across the U.S. —
+            Nix Creative works with service businesses and local brands across the U.S. —
             from solo operators just getting started online to established companies
             looking to scale smarter. If your business relies on getting found,
-            building trust, and converting leads, we were built for you.
+            building trust, and converting leads, Nix Creative was built for you.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export default function WhoWeHelp() {
         </div>
 
         <p className="mt-12 text-center text-gray-500 text-sm">
-          Based in Myrtle Beach, SC — working with clients from coast to coast.
+          Nix Creative — based in Myrtle Beach, SC — working with clients from coast to coast.
         </p>
 
       </div>
