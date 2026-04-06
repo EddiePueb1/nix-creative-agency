@@ -440,7 +440,7 @@ export default function MendozaCleaningCaseStudy() {
               </div>
             </motion.div>
 
-            {/* Testimonial placeholder */}
+            {/* Testimonial */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -448,14 +448,23 @@ export default function MendozaCleaningCaseStudy() {
               transition={{ duration: 0.5, delay: 0.12 }}
               className="bg-white rounded-3xl p-8 border-l-4 border-[#b4ff39] shadow-sm"
             >
-              <p className="text-sm font-semibold tracking-widest uppercase text-gray-400 mb-4">
+              <p className="text-sm font-semibold tracking-widest uppercase text-gray-400 mb-6">
                 Client Feedback
               </p>
-              {/* Swap this placeholder out when written testimonial is received */}
-              <p className="text-gray-400 text-sm italic">
-                Written testimonial coming soon — verbal feedback on delivery was overwhelmingly positive.
-              </p>
-              <p className="text-xs text-gray-800 font-semibold mt-3">— Georgina Mendoza, Mendoza Cleaning Services</p>
+              <blockquote>
+                <p className="text-gray-700 text-base leading-relaxed italic mb-6">
+                  &ldquo;I always wanted to be more professional, but without having a logo or anything, I couldn&apos;t really get the respect that I deserved. But after getting the shirts and the setup, I have been able to secure more jobs and better relationships with clients. Amazing work!&rdquo;
+                </p>
+                <footer className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-[#b4ff39] flex items-center justify-center shrink-0">
+                    <span className="text-black text-xs font-bold">GM</span>
+                  </div>
+                  <div>
+                    <p className="text-[#111111] font-semibold text-sm">Georgina Mendoza</p>
+                    <p className="text-gray-400 text-xs">Owner, Mendoza Cleaning Services</p>
+                  </div>
+                </footer>
+              </blockquote>
             </motion.div>
 
             {/* CTA */}

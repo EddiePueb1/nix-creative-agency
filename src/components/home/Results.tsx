@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Clock } from "lucide-react";
+import Link from "next/link";
 
 // ─────────────────────────────────────────────
 // STATS — real numbers from real client work
@@ -13,45 +14,41 @@ const STATS = [
     context: "Landscaping Unlimited — 41 avg visitors to 294 after rebuild",
   },
   {
-    value: "3",
-    label: "Local businesses served",
-    context: "And growing — case studies coming soon",
+    value: "0 → 1",
+    label: "Brand identity built from scratch",
+    context: "Mendoza Cleaning — logo, print, apparel, and digital presence",
   },
 ];
 
 // ─────────────────────────────────────────────
-// CLIENTS — real logos go here
-// Replace the initials block with an <img> tag once you have logo files.
-// Suggested path: /public/images/logos/landscaping-unlimited.svg
+// FEATURED CASE STUDIES
 // ─────────────────────────────────────────────
-const CLIENTS = [
+const FEATURED = [
   {
-    name: "Landscaping Unlimited",
-    initials: "LU",
-    services: ["Website Design", "Social Media", "Google Business"],
+    client: "Landscaping Unlimited",
+    headline: "From invisible to a 617% traffic spike.",
+    tags: ["Website Design", "Local SEO", "Social Media"],
+    image: "/images/results/landscaping/landscaping-hero.png",
+    link: "/results/landscaping-unlimited",
+    comingSoon: false,
   },
   {
-    name: "Mendoza Cleaning",
-    initials: "MC",
-    services: ["Brand Identity", "Print Collateral"],
+    client: "Mendoza Cleaning Services",
+    headline: "From zero brand identity to a complete system.",
+    tags: ["Brand Identity", "Print Materials", "Apparel"],
+    image: "/images/results/mendoza/business-card1.png",
+    link: "/results/mendoza-cleaning",
+    comingSoon: false,
   },
   {
-    name: "Vela Nutrition",
-    initials: "VN",
-    services: ["Brand Identity", "Social Media Setup"],
+    client: "Vela Nutrition",
+    headline: "Brand identity & social media setup.",
+    tags: ["Brand Identity", "Social Media Setup"],
+    image: null,
+    link: null,
+    comingSoon: true,
   },
 ];
-
-// ─────────────────────────────────────────────
-// TESTIMONIAL — hidden until written quote is received
-// Once you have a quote, paste it as a string below.
-// Reach out to Mendoza Cleaning + Landscaping Unlimited for written quotes.
-// ─────────────────────────────────────────────
-const TESTIMONIAL: { quote: string | null; author: string; role: string } = {
-  quote: null, // e.g. "Eddie completely transformed how we show up online..."
-  author: "Mendoza Cleaning",
-  role: "Owner",
-};
 
 export default function Results() {
   return (
@@ -102,72 +99,89 @@ export default function Results() {
           ))}
         </div>
 
-        {/* Client logos row */}
-        <div className="mb-16">
+        {/* Featured Case Studies */}
+        <div className="mb-4">
           <p className="text-xs font-semibold tracking-widest uppercase text-gray-600 mb-8">
-            Trusted by — Nix Creative clients
+            Featured Work — Nix Creative
           </p>
-          <div className="flex flex-wrap gap-4">
-            {CLIENTS.map((client, i) => (
-              <motion.div
-                key={client.name}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-              >
-                {/*
-                  TODO: Replace this initials block with a real logo once you have files.
-                  <img
-                    src={`/images/logos/${client.name.toLowerCase().replace(/ /g, '-')}.svg`}
-                    alt={client.name}
-                    className="h-8 w-auto object-contain filter brightness-0 invert"
-                  />
-                */}
-                <div className="w-10 h-10 rounded-xl bg-[#b4ff39] flex items-center justify-center shrink-0">
-                  <span className="text-black text-xs font-bold tracking-wider">
-                    {client.initials}
-                  </span>
-                </div>
-                <div>
-                  <p className="text-white text-sm font-semibold">{client.name}</p>
-                  <p className="text-gray-500 text-xs mt-0.5">
-                    {client.services.join(" · ")}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {FEATURED.map((project, i) => {
+              const inner = (
+                <motion.div
+                  key={project.client}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className={`group relative rounded-2xl overflow-hidden flex flex-col h-full ${
+                    project.comingSoon
+                      ? "border-2 border-dashed border-white/15 bg-white/[0.03]"
+                      : "bg-white/5 border border-white/10 hover:border-white/25 hover:bg-white/10"
+                  } transition-all duration-300`}
+                >
+                  {/* Image */}
+                  {project.image ? (
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.client}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-60" />
+                      {/* Hover arrow */}
+                      {!project.comingSoon && (
+                        <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300">
+                          <ArrowUpRight size={18} />
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    /* Coming soon placeholder */
+                    <div className="relative aspect-[4/3] w-full overflow-hidden flex items-center justify-center bg-white/[0.02]">
+                      <div className="text-center px-6">
+                        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-3">
+                          <Clock size={20} className="text-[#b4ff39]" />
+                        </div>
+                        <p className="text-gray-500 text-sm font-medium">
+                          Case study coming soon
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Content */}
+                  <div className="p-6 flex-grow flex flex-col">
+                    <p className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-2">
+                      {project.client}
+                    </p>
+                    <h3 className="text-lg font-display font-bold text-white mb-4 leading-snug group-hover:text-[#b4ff39] transition-colors">
+                      {project.headline}
+                    </h3>
+                    <div className="mt-auto flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-semibold uppercase tracking-wider bg-white/10 px-2.5 py-1 rounded-full text-gray-400"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+
+              if (project.link && !project.comingSoon) {
+                return (
+                  <Link key={project.client} href={project.link} className="block h-full">
+                    {inner}
+                  </Link>
+                );
+              }
+              return <div key={project.client} className="h-full">{inner}</div>;
+            })}
           </div>
         </div>
-
-        {/* Testimonial — hidden until quote is received */}
-        {TESTIMONIAL.quote && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="border-t border-white/10 pt-16"
-          >
-            <blockquote className="max-w-3xl">
-              <p className="text-2xl md:text-3xl font-display font-medium text-white leading-snug mb-6">
-                &ldquo;{TESTIMONIAL.quote}&rdquo;
-              </p>
-              <footer className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#b4ff39] flex items-center justify-center">
-                  <span className="text-black text-xs font-bold">
-                    {TESTIMONIAL.author.slice(0, 2).toUpperCase()}
-                  </span>
-                </div>
-                <div>
-                  <p className="text-white font-semibold text-sm">{TESTIMONIAL.author}</p>
-                  <p className="text-gray-500 text-xs">{TESTIMONIAL.role}</p>
-                </div>
-              </footer>
-            </blockquote>
-          </motion.div>
-        )}
 
       </div>
     </section>

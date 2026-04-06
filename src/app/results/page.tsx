@@ -2,7 +2,7 @@
 
 import { Container } from '@/components/ui/Container';
 import { motion } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 const PROJECTS = [
@@ -20,48 +20,6 @@ const PROJECTS = [
     image: "/images/results/mendoza/business-card1.png",
     link: "/results/mendoza-cleaning"
   },
-  {
-    client: "TechFlow",
-    title: "Making waves with AI Automations.",
-    tags: ["AI Automations", "Data-Driven", "Analytics"],
-    image: "https://picsum.photos/seed/techflow/1200/600",
-    link: "#"
-  },
-  {
-    client: "Global Reach",
-    title: "A healthier, sharper digital home.",
-    tags: ["Web Development", "Hosting", "Design"],
-    image: "https://picsum.photos/seed/globalreach/1200/600",
-    link: "#"
-  },
-  {
-    client: "Stellar Social",
-    title: "A bold, modern front door that tells the story.",
-    tags: ["Social Media", "Analytics", "Marketing"],
-    image: "https://picsum.photos/seed/stellar/1200/600",
-    link: "#"
-  },
-  {
-    client: "Vanguard Partners",
-    title: "Rebranding for a new era of finance.",
-    tags: ["Brand Identity", "Website Design", "SEO"],
-    image: "https://picsum.photos/seed/vanguard/1200/600",
-    link: "#"
-  },
-  {
-    client: "EcoLife",
-    title: "Scaling sustainable products organically.",
-    tags: ["SEO", "Content Marketing", "Web Development"],
-    image: "https://picsum.photos/seed/ecolife/1200/600",
-    link: "#"
-  },
-  {
-    client: "NexGen Retail",
-    title: "Data analytics that doubled conversion rates.",
-    tags: ["Data & Analytics", "AI Automations"],
-    image: "https://picsum.photos/seed/nexgen/1200/600",
-    link: "#"
-  }
 ];
 
 export default function ResultsPage() {
@@ -146,6 +104,44 @@ export default function ResultsPage() {
               </motion.div>
             </Link>
           ))}
+
+          {/* More Coming Soon Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="h-full bg-white/60 backdrop-blur-sm rounded-[2rem] overflow-hidden flex flex-col border-2 border-dashed border-gray-200"
+          >
+            {/* Visual area */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+              <div className="text-center px-8">
+                <div className="w-16 h-16 rounded-full bg-[#b4ff39]/15 flex items-center justify-center mx-auto mb-5">
+                  <Sparkles size={28} className="text-[#88c222]" />
+                </div>
+                <p className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-2">
+                  More on the way.
+                </p>
+                <p className="text-gray-500 text-sm max-w-xs mx-auto leading-relaxed">
+                  We're always working on new projects. Check back soon for the latest case studies.
+                </p>
+              </div>
+            </div>
+
+            {/* CTA area */}
+            <div className="p-8 md:p-10 flex-grow flex flex-col items-center justify-center text-center">
+              <p className="text-gray-600 text-sm mb-5">
+                Have a project in mind? Let's build the next case study together.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-[#111111] text-white rounded-full px-6 py-3 text-sm font-semibold hover:bg-gray-800 hover:shadow-lg transition-all duration-300"
+              >
+                Start a conversation
+                <ArrowUpRight size={14} />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </Container>
     </main>
