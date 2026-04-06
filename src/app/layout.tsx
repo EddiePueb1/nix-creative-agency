@@ -12,11 +12,20 @@ export const metadata = {
     siteName: 'Nix Creative',
     url: 'https://nixcreative.net',
     type: 'website',
+    images: [
+      {
+        url: 'https://nixcreative.net/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Nix Creative — Digital Marketing Agency',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Nix Creative | Digital Marketing Agency',
     description: 'Nix Creative helps service businesses grow with website design, SEO, social media, branding, analytics, and AI automations.',
+    images: ['https://nixcreative.net/og-image.png'],
   },
   alternates: {
     canonical: 'https://nixcreative.net',
