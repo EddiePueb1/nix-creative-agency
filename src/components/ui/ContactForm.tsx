@@ -127,14 +127,13 @@ export function ContactForm({
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-300 ml-1">Phone Number <span className="text-red-400">*</span></label>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-300 ml-1">Phone Number</label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
                 className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#88c222] focus:border-transparent text-white placeholder-gray-500 transition-all hover:border-white/20"
                 placeholder="(555) 123-4567"
-                required
               />
             </div>
           </div>
@@ -209,12 +208,11 @@ export function ContactForm({
               </div>
             </div>
             <div className="space-y-2 relative">
-              <label htmlFor="monthlyBudget" className="block text-sm font-medium text-gray-300 ml-1">Monthly Marketing Budget <span className="text-red-400">*</span></label>
+              <label htmlFor="monthlyBudget" className="block text-sm font-medium text-gray-300 ml-1">Monthly Marketing Budget</label>
               <select
                 id="monthlyBudget"
                 name="monthlyBudget"
                 className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#88c222] focus:border-transparent text-white placeholder-gray-500 transition-all hover:border-white/20 appearance-none"
-                required
                 defaultValue=""
               >
                 <option value="" disabled className="bg-[#1a1a1a] text-gray-400">Select an option...</option>
