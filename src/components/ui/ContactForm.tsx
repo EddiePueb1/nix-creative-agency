@@ -52,6 +52,15 @@ export function ContactForm({
       if (data.success) {
         setStatus("success");
         form.reset();
+
+        // Track successful form submission in Google Analytics
+        if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+          (window as any).gtag("event", "generate_lead", {
+            event_category: "Contact Form",
+            event_label: "Form Submitted",
+          });
+        }
+
         setTimeout(() => setStatus("idle"), 5000);
       } else {
         console.error("Submission failed. Web3Forms message:", data.message);
