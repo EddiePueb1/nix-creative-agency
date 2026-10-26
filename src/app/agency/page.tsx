@@ -12,13 +12,6 @@ const CARDS = [
     tags: ["Our Story", "Vision", "Values"],
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200",
     link: "/about"
-  },
-  {
-    title: "Our Team",
-    description: "Meet the passionate experts who turn big ideas into reality.",
-    tags: ["Specialists", "Culture", "Talent"],
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
-    link: "/team"
   }
 ];
 

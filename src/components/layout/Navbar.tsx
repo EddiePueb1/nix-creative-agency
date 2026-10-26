@@ -112,7 +112,6 @@ export default function Navbar() {
           <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
             <div className="bg-white border border-black/5 shadow-xl rounded-2xl p-2 w-48 flex flex-col">
               <Link href="/about" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">About Us</Link>
-              <Link href="/team" className="px-4 py-2 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-xl transition-colors">Our Team</Link>
             </div>
           </div>
         </div>
@@ -229,7 +228,6 @@ export default function Navbar() {
                 <MobileNavLink href="/agency" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-display font-bold block mb-4 mt-2">Agency</MobileNavLink>
                 <div className="flex flex-col gap-3 pl-4 border-l-2 border-black/10">
                   <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">About Us</MobileNavLink>
-                  <MobileNavLink href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-gray-600 hover:text-black">Our Team</MobileNavLink>
                 </div>
               </div>
 
